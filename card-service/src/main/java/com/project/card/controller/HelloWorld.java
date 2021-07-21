@@ -8,6 +8,6 @@ public class HelloWorld {
 
 	@GetMapping("/health")
 	public String respond() {
-		return "Hello from card service. Service is up"; 
+		return "Hello from card service. Service is up updated"; 
 	}
 }
