@@ -60,17 +60,18 @@ pipeline {
                 echo 'Building for eureka'
                 script {
                     try {
-                        dir('eureka') {
+                        dir('eureka') 
+                        {
                             sh 'mvn test'
                             withSonarQubeEnv('SonarQube') {
                                 sh 'mvn clean package sonar:sonar'
                             }
                             waitForQualityGate abortPipeline: true
-                            dockerImage = docker.build registry + '/eureka:latest'
-                            docker.withRegistry( '', registryCredential )
-                            {
-                                dockerImage.push()
-                            }
+//                             dockerImage = docker.build registry + '/eureka:latest'
+//                             docker.withRegistry( '', registryCredential )
+//                             {
+//                                 dockerImage.push()
+//                             }
                         }
                     } catch (error) {
                         throw error
